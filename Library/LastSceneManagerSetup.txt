@@ -1,1 +1,4 @@
-sceneSetups: []
+sceneSetups:
+- path: Assets/DataFiles/Scenes/ARBookScene.unity
+  isLoaded: 1
+  isActive: 1
