@@ -17,7 +17,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
     #region PRIVATE_MEMBER_VARIABLES
 
     protected TrackableBehaviour mTrackableBehaviour;
-
+    public GameObject ship, aeroplane, cloud;
     #endregion // PRIVATE_MEMBER_VARIABLES
 
     #region UNTIY_MONOBEHAVIOUR_METHODS
@@ -27,6 +27,9 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
         if (mTrackableBehaviour)
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
+        ship.SetActive(false);
+        aeroplane.SetActive(false);
+        cloud.SetActive(false);
     }
 
     #endregion // UNTIY_MONOBEHAVIOUR_METHODS
@@ -84,6 +87,20 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         // Enable canvas':
         foreach (var component in canvasComponents)
             component.enabled = true;
+
+        if (mTrackableBehaviour.TrackableName == "SHIP")
+        {
+            ship.SetActive(true);
+
+        }
+
+        if (mTrackableBehaviour.TrackableName == "AEROPLANE")
+        {
+            aeroplane.SetActive(true);
+            cloud.SetActive(true);
+        }
+
+        
     }
 
 
@@ -104,6 +121,18 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         // Disable canvas':
         foreach (var component in canvasComponents)
             component.enabled = false;
+
+        if (mTrackableBehaviour.TrackableName == "SHIP")
+        {
+            ship.SetActive(false);
+
+        }
+
+        if (mTrackableBehaviour.TrackableName == "AEROPLANE")
+        {
+            aeroplane.SetActive(false);
+            cloud.SetActive(false);
+        }
     }
 
     #endregion // PRIVATE_METHODS
